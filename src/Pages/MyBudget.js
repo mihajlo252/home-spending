@@ -8,8 +8,9 @@ export const MyBudget = () => {
                     {/* Page content here */}
                     <label
                         htmlFor="my-drawer-2"
-                        className="btn btn-primary drawer-button lg:hidden"
+                        className="btn btn-neutral drawer-button lg:hidden"
                     >
+                        Menu
                     </label>
                 </div>
                 <div className="drawer-side">
@@ -17,7 +18,7 @@ export const MyBudget = () => {
                     <ul className="menu p-4 w-50 h-full bg-base-200 text-base-content">
                         {/* Sidebar content here */}
                         <li>
-                            <button className="btn btn-nav content-center">Getting Started</button>
+                            <button className="btn content-center">Getting Started</button>
                         </li>
                         <li>
                             <button className="btn btn-nav content-center">My Finances</button>

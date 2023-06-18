@@ -48,7 +48,7 @@ export const Navbar = () => {
             </div>
             <div className="navbar-end gap-2">
                 <Link to="/spending" className="btn">Register</Link>
-                <Link to="/spending" className="btn btn-primary text-neutral">Log in</Link>
+                <Link to="/login" className="btn btn-primary text-neutral">Log in</Link>
             </div>
         </div>
     );
