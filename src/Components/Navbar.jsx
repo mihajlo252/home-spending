@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const Navbar = () => {
-
-
+export const Navbar = ({ userLoggedIn, user }) => {
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -11,13 +9,20 @@ export const Navbar = () => {
                     homeSpending
                 </Link>
             </div>
+
             <div className="navbar-end gap-2 mr-4">
-                <Link to="/register" className="btn">
-                    Register
-                </Link>
-                <Link to="/login" className="btn btn-primary text-neutral">
-                    Log in
-                </Link>
+                {userLoggedIn ? (
+                    <p>{user.email}</p>
+                ) : (
+                    <>
+                        <Link to="/register" className="btn">
+                            Register
+                        </Link>
+                        <Link to="/login" className="btn btn-primary text-neutral">
+                            Log in
+                        </Link>
+                    </>
+                )}
             </div>
         </div>
     );

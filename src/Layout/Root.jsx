@@ -10,7 +10,7 @@ export const Root = () => {
 
     return (
         <div>
-            <Navbar />
+            <Navbar userLoggedIn={userLoggedIn} user={user}/>
             <Outlet context={[userLoggedIn, setUserLoggedIn, user, setUser]}/>
             <Footer />
         </div>
