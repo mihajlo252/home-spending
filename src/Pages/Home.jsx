@@ -1,9 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
+// import { Landing } from "../Components/Landing";
+import React, { useEffect } from "react";
+import { Link, useOutletContext } from "react-router-dom";
 import background from "../Assets/Images/tierra-mallorca-JXI2Ap8dTNc-unsplash.jpg";
-import { supabase } from "../supabase/Supabase";
 
 export const Home = () => {
+    const [userLoggedIn, setUserLoggedIn, user] = useOutletContext()
 
     return (
         <div
@@ -13,12 +14,12 @@ export const Home = () => {
             <div className="hero-overlay backdrop-blur"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md mb-20">
-                    <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+                    <h2 className="mb-5 text-5xl font-bold">Hello there</h2>
                     <p className="mb-5">
                         Welcome to homeSpending! Here we provide a way for you to keep your home
                         budget in check.
                     </p>
-                    <Link to="/login" className="btn btn-accent text-neutral">
+                    <Link to={userLoggedIn ? `${user.id}/mybudget` : "/login"} className="btn btn-accent text-neutral">
                         Get Started
                     </Link>
                 </div>

@@ -1,29 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
-import { LoginApi } from "../Utilities/LoginApi";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { RegisterApi } from "../Utilities/RegisterApi";
 
-export const Login = () => {
+export const Register = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
-    const [userLoggedIn, setUserLoggedIn, user, setUser] = useOutletContext()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const data = await LoginApi(email, password, setUserLoggedIn, setUser)
-        console.log(data);
-        navigate(`/${data.user.id}/mybudget`)
+        RegisterApi(email, password)
+        navigate(`/login`)
     }
-
 
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Login now!</h1>
+                    <h1 className="text-5xl font-bold">Register!</h1>
                     <p className="py-6">
-                        Please enter your email and password to login.
+                        Please enter an email and password to register.
                     </p>
                 </div>
                 <form onSubmit={(e) => handleSubmit(e)} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -51,19 +48,15 @@ export const Login = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
+                            
                             <label className="label">
-                                <a href="/" className="label-text-alt link link-hover">
-                                    Forgot password?
-                                </a>
-                            </label>
-                            <label className="label">
-                                <a href="/register" className="label-text-alt link link-hover">
-                                    Register
+                                <a href="/login" className="label-text-alt link link-hover">
+                                    Already have an account? Login!
                                 </a>
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button type="submit" className="btn btn-primary">Login</button>
+                            <button type="submit" className="btn btn-primary">Register</button>
                         </div>
                     </div>
                 </form>

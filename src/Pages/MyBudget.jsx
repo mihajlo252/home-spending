@@ -1,5 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { LogoutApi } from "../Utilities/LogoutApi";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 export const MyBudget = () => {
+
+
+    const [userLoggedIn, setUserLoggedIn] = useOutletContext()
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        LogoutApi()
+        setUserLoggedIn(false)
+    }
+
+    useEffect(() => {
+        if(!userLoggedIn) {
+            navigate("/")
+        }
+    }, [userLoggedIn])
+
     return (
         <div className="hero items-start min-h-screen bg-base-200">
             <div className="drawer lg:drawer-open">
@@ -22,6 +40,9 @@ export const MyBudget = () => {
                         </li>
                         <li>
                             <button className="btn btn-nav content-center">My Finances</button>
+                        </li>
+                        <li>
+                            <Link to="/" className="btn btn-nav content-center" onClick={handleLogout} replace>Log Out</Link>
                         </li>
                     </ul>
                 </div>
