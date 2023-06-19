@@ -12,7 +12,7 @@ export const Navbar = ({ userLoggedIn, user }) => {
 
             <div className="navbar-end gap-2 mr-4">
                 {userLoggedIn ? (
-                    <p>{user.email}</p>
+                    <p>{user?.email}</p>
                 ) : (
                     <>
                         <Link to="/register" className="btn">

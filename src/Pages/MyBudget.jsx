@@ -8,8 +8,7 @@ export const MyBudget = () => {
     const navigate = useNavigate()
 
     const handleLogout = () => {
-        LogoutApi()
-        setUserLoggedIn(false)
+        LogoutApi(setUserLoggedIn)
     }
 
     useEffect(() => {

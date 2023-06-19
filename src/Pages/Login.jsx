@@ -12,7 +12,6 @@ export const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const data = await LoginApi(email, password, setUserLoggedIn, setUser)
-        console.log(data);
         navigate(`/${data.user.id}/mybudget`)
     }
 
