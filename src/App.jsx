@@ -9,7 +9,7 @@ import {
 
 // pages
 import { Root } from "./Layout/Root";
-import { MyBudget } from "./Pages/MyBudget";
+import { Dashboard } from "./Pages/Dashboard";
 import { Login } from "./Pages/Login";
 import { Home } from "./Pages/Home";
 import { Register } from "./Pages/Register";
@@ -18,7 +18,7 @@ const router = createBrowserRouter(
     createRoutesFromElements([
         <Route path="/" element={<Root />}>
             <Route index element={<Home />} />
-            <Route path="/:id/mybudget" element={<MyBudget />} />
+            <Route path="/:id/dashboard" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
         </Route>

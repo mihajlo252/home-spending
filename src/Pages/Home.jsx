@@ -28,7 +28,7 @@ export const Home = () => {
                         Welcome to homeSpending! Here we provide a way for you to keep your home
                         budget in check.
                     </p>
-                    <Link to={userLoggedIn ? `${user?.id}/mybudget` : "/login"} className="btn btn-accent text-neutral">
+                    <Link to={userLoggedIn ? `${user?.id}/dashboard` : "/login"} className="btn btn-accent text-neutral">
                         Get Started
                     </Link>
                 </div>

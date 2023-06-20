@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { LogoutApi } from "../Utilities/LogoutApi";
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
-export const MyBudget = () => {
+export const Dashboard = () => {
 
 
     const [userLoggedIn, setUserLoggedIn] = useOutletContext()

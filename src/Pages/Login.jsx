@@ -12,7 +12,7 @@ export const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const data = await LoginApi(email, password, setUserLoggedIn, setUser)
-        navigate(`/${data.user.id}/mybudget`)
+        navigate(`/${data.user.id}/dashboard`)
     }
 
 
