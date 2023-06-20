@@ -7,4 +7,10 @@
     - Overview of all spendings and earnings of household
     - Filtering by date, month or year
     - See who spends most
-...
+
+
+## Preview :
+
+![Landing preview](/preview_images/home-spending-landing.jpg "Landing")
+![Login preview](/preview_images/home-spending-login.jpg "Login")
+![Dashboard preview](/preview_images/home-spending-dashboard.jpg "Dashboard")
