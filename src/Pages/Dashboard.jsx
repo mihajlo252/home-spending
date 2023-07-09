@@ -4,12 +4,13 @@ import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { Table } from "../Components/Table";
 import { GetAllSpendings } from "../Utilities/GetAllSpendings";
 import { GetUserEmailFromId } from "../Utilities/GetUserEmailFromId";
-
+import { GettingStarted } from "./Subpages/GettingStarted";
 
 export const Dashboard = () => {
     const [userLoggedIn, setUserLoggedIn, user, setUser] = useOutletContext();
     const [tableRows, setTableRows] = useState([]);
-    const [userEmailsFromId, setUserEmailsFromId] = useState([])
+    const [userEmailsFromId, setUserEmailsFromId] = useState([]);
+    const [subpage, setSubpage] = useState(sessionStorage.getItem("dashboard-subpage") || "gettingstarted");
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -18,9 +19,14 @@ export const Dashboard = () => {
 
     const handleGetData = async () => {
         const res = await GetAllSpendings();
-        const emails = await GetUserEmailFromId()
+        const emails = await GetUserEmailFromId();
         setTableRows(res.data);
-        setUserEmailsFromId(emails.data)
+        setUserEmailsFromId(emails.data);
+    };
+
+    const handleSetSubpage = (page) => {
+        setSubpage(page);
+        sessionStorage.setItem("dashboard-subpage", page);
     };
 
     const isUserLoggedIn = localStorage.getItem("sb-rngxfrqygzomwuycgeej-auth-token");
@@ -42,10 +48,20 @@ export const Dashboard = () => {
         >
             <ul className="menu p-4 pl-0 h-full bg-base-200 text-base-content place-self-start">
                 <li>
-                    <button className="btn content-center">Getting Started</button>
+                    <button
+                        className="btn content-center"
+                        onClick={() => handleSetSubpage("gettingstarted")}
+                    >
+                        Getting Started
+                    </button>
                 </li>
                 <li>
-                    <button className="btn btn-nav content-center">My Finances</button>
+                    <button
+                        className="btn btn-nav content-center"
+                        onClick={() => handleSetSubpage("myfinances")}
+                    >
+                        My Finances
+                    </button>
                 </li>
                 <li>
                     <Link
@@ -58,9 +74,13 @@ export const Dashboard = () => {
                     </Link>
                 </li>
             </ul>
-            <div>
-                <Table tableRows={tableRows} userEmailsFromId={userEmailsFromId} />
-            </div>
+            {subpage === "gettingstarted" && <GettingStarted />}
+            {subpage === "myfinances" && (
+                <div>
+                    <Table tableRows={tableRows} userEmailsFromId={userEmailsFromId} />
+                </div>
+            )}
+
             <p className="hidden lg:inline justify-self-end">Sidebar</p>
         </div>
     );

@@ -16,11 +16,11 @@ export const Table = ({ tableRows, userEmailsFromId }) => {
                 </tr>
             </thead>
             <tbody className={`bg-base-300`}>
-                {tableRows.map((row) => {
+                {tableRows.map((row, idx) => {
                     let date = new Date(row.created_at).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"})
                     return (
                     <tr key={row.id} className="hover">
-                        <th>{row.id}</th>
+                        <th>{idx + 1}</th>
                         <td>{userEmailsFromId.find(item => item.id === row.user_id).email}</td>
                         <td>${row.amount}</td>
                         <td>{date}</td>
