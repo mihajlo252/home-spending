@@ -1,3 +1,4 @@
 .table {
-    max-height: 40rem;
+    min-height: 5rem;
+    max-width: 60dvw;
 }

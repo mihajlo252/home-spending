@@ -3,7 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+    } 
+
     html {
         font-family: "K2D", sans-serif;
     }
+
 }

@@ -2,35 +2,36 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TableStyles from "./Table.module.css";
 
-export const Table = ({ tableRows }) => {
+export const Table = ({ tableRows, userEmailsFromId }) => {
     return (
-        <table className={`table bg-base-300 rounded-md ${TableStyles.table}`}>
+        <table className={`bg-primary rounded-box table ${TableStyles.table}`}>
             {/* head */}
-            <thead className={`overflow-y-scroll `}>
+            <thead className={` text-secondary text-base `}>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>User</th>
                     <th>Amount</th>
                     <th>Date</th>
-                    <th>Image</th>
+                    <th></th>
                 </tr>
             </thead>
-            <tbody>
-                {tableRows.map((row) => (
+            <tbody className={`bg-base-300`}>
+                {tableRows.map((row) => {
+                    let date = new Date(row.created_at).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"})
+                    return (
                     <tr key={row.id} className="hover">
-                        <th>{tableRows.indexOf(row) + 1}.</th>
-                        <td>{row.name}</td>
-                        <td>{row.amount}</td>
-                        <td>{row.date}</td>
-                        <td>{row.image}</td>
-
+                        <th>{row.id}</th>
+                        <td>{userEmailsFromId.find(item => item.id === row.user_id).email}</td>
+                        <td>${row.amount}</td>
+                        <td>{date}</td>
                         <td>
                             <Link to="/" className="btn btn-ghost">
                                 Details
                             </Link>
                         </td>
                     </tr>
-                ))}
+                    )
+                })}
             </tbody>
         </table>
     );

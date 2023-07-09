@@ -6,7 +6,7 @@ import background from "../Assets/Images/tierra-mallorca-JXI2Ap8dTNc-unsplash.jp
 export const Home = () => {
     const [userLoggedIn, setUserLoggedIn, user, setUser] = useOutletContext()
 
-    const isUserLoggedIn = localStorage.getItem("sb-vvyrcrkgzorpqxjwmlky-auth-token")
+    const isUserLoggedIn = localStorage.getItem("sb-rngxfrqygzomwuycgeej-auth-token")
 
     useEffect(() => {
         if(isUserLoggedIn) {
