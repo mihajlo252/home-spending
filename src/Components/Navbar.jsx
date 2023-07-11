@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export const Navbar = ({ userLoggedIn, user }) => {
+
+    console.log("5");
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
