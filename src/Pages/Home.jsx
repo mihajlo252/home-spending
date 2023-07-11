@@ -4,16 +4,8 @@ import { Link, useOutletContext } from "react-router-dom";
 import background from "../Assets/Images/tierra-mallorca-JXI2Ap8dTNc-unsplash.jpg";
 
 export const Home = () => {
-    const [userLoggedIn, setUserLoggedIn, user, setUser] = useOutletContext()
-
-    const isUserLoggedIn = localStorage.getItem("sb-rngxfrqygzomwuycgeej-auth-token")
-
-    useEffect(() => {
-        if(isUserLoggedIn) {
-            setUserLoggedIn(true)
-            setUser(JSON.parse(isUserLoggedIn).user || null)
-        }
-    }, [])
+    const [user] = useOutletContext()
+    console.log(user.current);
 
     return (
         <div
@@ -28,7 +20,7 @@ export const Home = () => {
                         Welcome to homeSpending! Here we provide a way for you to keep your home
                         budget in check.
                     </p>
-                    <Link to={userLoggedIn ? `${user?.id}/dashboard` : "/login"} className="btn btn-accent text-neutral">
+                    <Link to={user.current !== null ? `${user.current.user.id}/dashboard` : "/login"} className="btn btn-accent text-neutral">
                         Get Started
                     </Link>
                 </div>

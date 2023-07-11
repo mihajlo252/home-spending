@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { AddFinanceApi } from "../../Utilities/AddFinanceApi";
 
-export const AddFinance = ({ userId, setSubpage }) => {
+export const AddFinance = ({ user, setSubpage }) => {
     const [amount, setAmount] = useState("");
     const [room, setRoom] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault();
-        AddFinanceApi(amount, room, userId.id);
+        AddFinanceApi(amount, room, user);
         setSubpage("myfinances");
         sessionStorage.setItem("dashboard-subpage", "myfinances");
     };

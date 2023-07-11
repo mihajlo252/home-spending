@@ -8,7 +8,7 @@ import { GettingStarted } from "./Subpages/GettingStarted";
 import { AddFinance } from "./Subpages/AddFinance";
 
 export const Dashboard = () => {
-    const [userLoggedIn, setUserLoggedIn, user, setUser] = useOutletContext();
+    const [user] = useOutletContext();
     const [tableRows, setTableRows] = useState([]);
     const [userEmailsFromId, setUserEmailsFromId] = useState([]);
     const [subpage, setSubpage] = useState(
@@ -17,7 +17,7 @@ export const Dashboard = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        LogoutApi(setUserLoggedIn);
+        LogoutApi(user);
         sessionStorage.removeItem("dashboard-subpage");
         console.log("1");
     };
@@ -28,31 +28,23 @@ export const Dashboard = () => {
         setTableRows(res.data);
         setUserEmailsFromId(emails.data);
         console.log("2");
-
     };
 
     const handleSetSubpage = (page) => {
         setSubpage(page);
         sessionStorage.setItem("dashboard-subpage", page);
         console.log("3");
-
     };
 
-    const isUserLoggedIn = localStorage.getItem("sb-rngxfrqygzomwuycgeej-auth-token");
-
     useEffect(() => {
-        if (isUserLoggedIn) {
-            setUserLoggedIn(true);
-            setUser(JSON.parse(isUserLoggedIn).user || null);
-            if(user != null) {
-                handleGetData(user.id)
-            }
+        console.log(user);
+        if (user) {
+            handleGetData(user.current.user.id);
         }
-        if (!isUserLoggedIn) {
+        if (!user) {
             navigate("/login");
         }
-        console.log("4");
-    }, [userLoggedIn]);
+    }, [user]);
 
     return (
         <div
@@ -100,7 +92,7 @@ export const Dashboard = () => {
                     <Table tableRows={tableRows} userEmailsFromId={userEmailsFromId} />
                 </div>
             )}
-            {subpage === "addfinance" && <AddFinance userId={user} setSubpage={setSubpage} />}
+            {subpage === "addfinance" && <AddFinance user={user} setSubpage={setSubpage} />}
 
             <p className="hidden lg:inline justify-self-end">Sidebar</p>
         </div>

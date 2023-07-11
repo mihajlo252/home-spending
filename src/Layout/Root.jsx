@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Navbar } from "../Components/Navbar";
 import { Outlet } from "react-router-dom";
 import { Footer } from "../Components/Footer";
 
 export const Root = () => {
-
-    const [userLoggedIn, setUserLoggedIn] = useState(false);
-    const [user, setUser] = useState(null);
+    const [userToken, setUserToken] = useState(
+        JSON.parse(localStorage.getItem("sb-rngxfrqygzomwuycgeej-auth-token")) || null
+    );
+    const user = useRef(userToken);
 
     return (
         <div>
-            <Navbar userLoggedIn={userLoggedIn} user={user}/>
-            <Outlet context={[userLoggedIn, setUserLoggedIn, user, setUser]}/>
+            <Navbar user={user} />
+            <Outlet context={[user]} />
             <Footer />
         </div>
     );

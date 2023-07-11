@@ -7,11 +7,11 @@ export const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
-    const [userLoggedIn, setUserLoggedIn, user, setUser] = useOutletContext()
+    const [user] = useOutletContext()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const data = await LoginApi(email, password, setUserLoggedIn, setUser)
+        const data = await LoginApi(email, password, user)
         navigate(`/${data.user.id}/dashboard`)
     }
 
