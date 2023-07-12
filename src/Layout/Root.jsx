@@ -4,10 +4,8 @@ import { Outlet } from "react-router-dom";
 import { Footer } from "../Components/Footer";
 
 export const Root = () => {
-    const [userToken, setUserToken] = useState(
-        JSON.parse(localStorage.getItem("sb-rngxfrqygzomwuycgeej-auth-token")) || null
-    );
-    const user = useRef(userToken);
+    const userToken = JSON.parse(localStorage.getItem("sb-rngxfrqygzomwuycgeej-auth-token"))
+    const user = userToken ? useRef(userToken.user) : useRef(userToken)
 
     return (
         <div>

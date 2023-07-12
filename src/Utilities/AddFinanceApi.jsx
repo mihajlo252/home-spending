@@ -6,7 +6,7 @@ export const AddFinanceApi = async (amount, room, user) => {
     const { data, error } = await supabase.from("spending").insert({
         room_id: room_id,
         amount: amount,
-        user_id: user.current.user.id,
+        user_id: user.current.id,
     });
 
     if (error) {

@@ -10,6 +10,6 @@ export const LoginApi = async (email, password, user) => {
         console.error(error);
         return
     }
-    user.current = data
+    user.current = data.user
     return data
 }

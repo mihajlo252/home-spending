@@ -39,7 +39,7 @@ export const Dashboard = () => {
     useEffect(() => {
         console.log(user);
         if (user) {
-            handleGetData(user.current.user.id);
+            handleGetData(user.current.id);
         }
         if (!user) {
             navigate("/login");
