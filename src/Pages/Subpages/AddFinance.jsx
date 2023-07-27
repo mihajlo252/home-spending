@@ -6,9 +6,8 @@ export const AddFinance = ({ user, setSubpage }) => {
     const [room, setRoom] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault();
-        AddFinanceApi(amount, room, user);
-        setSubpage("myfinances");
         sessionStorage.setItem("dashboard-subpage", "myfinances");
+        AddFinanceApi(amount, room, user, setSubpage);
     };
 
     return (

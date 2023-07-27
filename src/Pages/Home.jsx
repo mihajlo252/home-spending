@@ -5,11 +5,10 @@ import background from "../Assets/Images/tierra-mallorca-JXI2Ap8dTNc-unsplash.jp
 
 export const Home = () => {
     const [user] = useOutletContext()
-    console.log(user.current);
-
+    
     return (
         <div
-            className="hero items-center min-h-screen"
+            className="hero items-center min-h-screen"  
             style={{ backgroundImage: `url(${background})` }}
         >
             <div className="hero-overlay backdrop-blur"></div>

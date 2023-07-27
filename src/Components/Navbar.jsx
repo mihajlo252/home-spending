@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Navbar = ({ user }) => {
+
+    console.log(user);
 
     return (
         <div className="navbar bg-base-100">
@@ -13,7 +15,7 @@ export const Navbar = ({ user }) => {
 
             <div className="navbar-end gap-2 mr-4">
                 {user ? (
-                    <p>{user.email}</p>
+                    <p>{user}</p>
                 ) : (
                     <>
                         <Link to="/register" className="btn">

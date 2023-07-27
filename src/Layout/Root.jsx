@@ -9,7 +9,7 @@ export const Root = () => {
 
     return (
         <div>
-            <Navbar user={user} />
+            <Navbar user={user.current?.email} />
             <Outlet context={[user]} />
             <Footer />
         </div>
