@@ -4,17 +4,21 @@ import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { GettingStarted } from "./Subpages/GettingStarted";
 import { AddFinance } from "./Subpages/AddFinance";
 import { MyFinances } from "./Subpages/MyFinances";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/user";
 
 export const Dashboard = () => {
   const [user] = useOutletContext();
+  const dispatch = useDispatch();
   
   const [subpage, setSubpage] = useState(
     sessionStorage.getItem("dashboard-subpage") || "gettingstarted"
   );
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    LogoutApi(user);
+  const handleLogout = async () => {
+    await LogoutApi(user);
+    dispatch(logout());
     sessionStorage.removeItem("dashboard-subpage");
   };
   const handleSetSubpage = (page) => {

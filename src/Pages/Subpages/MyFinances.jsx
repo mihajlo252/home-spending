@@ -7,16 +7,18 @@ export const MyFinances = ({ user }) => {
   const [tableRows, setTableRows] = useState([]);
   const [userEmailsFromId, setUserEmailsFromId] = useState([]);
 
-  const handleGetData = async (userId) => {
-    const res = await GetAllSpendings(userId);
-    const emails = await GetUserEmailFromId();
-    setTableRows(res.data);
-    setUserEmailsFromId(emails.data);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const [spendingsResponse, emailsResponse] = await Promise.all([
+        GetAllSpendings(user.current.id),
+        GetUserEmailFromId()
+      ]);
+      setTableRows(spendingsResponse.data);
+      setUserEmailsFromId(emailsResponse.data);
+    };
+
     if (user) {
-      handleGetData(user.current.id);
+      fetchData();
     }
   }, [user]);
 

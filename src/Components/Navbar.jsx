@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export const Navbar = ({ user }) => {
 
-    console.log(user);
+export const Navbar = () => {
+    const { userData } = useSelector((state) => state.userData);
 
     return (
         <div className="navbar bg-base-100">
@@ -14,8 +15,8 @@ export const Navbar = ({ user }) => {
             </div>
 
             <div className="navbar-end gap-2 mr-4">
-                {user ? (
-                    <p>{user}</p>
+                {userData ? (
+                    <p>{userData.user.email}</p>
                 ) : (
                     <>
                         <Link to="/register" className="btn">

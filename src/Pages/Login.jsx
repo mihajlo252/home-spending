@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import React, { useState }  from "react";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { LoginApi } from "../Utilities/LoginApi";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/user";
 
 export const Login = () => {
-
+    const dispatch = useDispatch();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
@@ -12,7 +14,9 @@ export const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const data = await LoginApi(email, password, user)
+        dispatch(login(data))
         navigate(`/${data.user.id}/dashboard`)
+
     }
 
 
