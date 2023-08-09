@@ -11,6 +11,6 @@
 
 ## Preview :
 
-![Landing preview](/preview_images/home-spending-landing.jpg "Landing")
-![Login preview](/preview_images/home-spending-login.jpg "Login")
-![Dashboard preview](/preview_images/home-spending-dashboard.jpg "Dashboard")
+![Landing preview](/preview_images\LandingPage.png "Landing")
+![Login preview](/preview_images\LoginPage.png "Login")
+![Dashboard preview](/preview_images\MyFinances.png "Dashboard - MyFinances")
