@@ -1,4 +1,41 @@
 .table {
-    min-height: 5rem;
-    max-width: 60dvw;
+  min-height: 5rem;
+  min-width: 50rem;
+}
+
+.scroll_box {
+  max-height: 100%;
+}
+
+section {
+  position: relative;
+  max-height: 30rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 1rem 2rem;
+}
+
+.scrollable {
+  overflow-y: scroll;
+}
+.scrollable::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+.scrollable::-webkit-scrollbar-thumb {
+  background: gray;
+}
+
+/* Handle on hover */
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: #BEA66A;
 }

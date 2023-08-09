@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "../../Components/Table";
+import { CustomTable } from "../../Components/CustomTable";
 import { GetAllSpendings } from "../../Utilities/GetAllSpendings";
 import { GetUserEmailFromId } from "../../Utilities/GetUserEmailFromId";
 
@@ -22,5 +23,5 @@ export const MyFinances = ({ user }) => {
     }
   }, [user]);
 
-  return <Table tableRows={tableRows} userEmailsFromId={userEmailsFromId} />;
+  return <CustomTable tableRows={tableRows} userEmailsFromId={userEmailsFromId} />;
 };
