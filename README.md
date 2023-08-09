@@ -11,6 +11,6 @@
 
 ## Preview :
 
-![Landing preview](./preview_images\LandingPage.png "Landing")
+![Landing preview](./preview_images/LandingPage.png "Landing")
 ![Login preview](./preview_images/LoginPage.png "Login")
-![Dashboard preview](./preview_images\MyFinances.png "Dashboard - MyFinances")
+![Dashboard preview](./preview_images/MyFinances.png "Dashboard - MyFinances")
